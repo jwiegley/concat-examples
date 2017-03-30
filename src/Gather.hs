@@ -5,12 +5,13 @@
 
 module Gather where
 
-import ConCat.Category
+import Prelude hiding (id, (.), curry, uncurry, const)
 
 import Control.Arrow (Kleisli(..))
 import Control.Monad.Writer
 import Data.Set
-import Prelude hiding (id, (.), curry, uncurry, const)
+
+import ConCat.Category
 
 newtype Gather a b = Gather { runGather :: Kleisli (Writer (Set Int)) a b }
 
@@ -32,9 +33,6 @@ instance Num a => NumCat Gather a where
 
 instance ConstCat Gather Int where
   const b = Gather $ Kleisli $ const $ b <$ tell (singleton b)
-
-equation :: Num a => a -> a -> a
-equation x y = x + y - y
 
 gather :: Gather a b -> a -> (b, Set Int)
 gather f a = runWriter $ flip runKleisli a $ runGather f
