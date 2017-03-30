@@ -5,8 +5,9 @@
 module Main where
 
 import ConCat.AltCat (ccc)
+import ConCat.Syntactic (Syn,render)
 
 import Gather
 
 main :: IO ()
-main = print (gather (ccc (\ (x,y) -> x + y - y :: Int)) (10,20))
+main = print (gather (ccc (\ (x,y) -> x - 3 + 7 * y :: Int)) (10,20))
