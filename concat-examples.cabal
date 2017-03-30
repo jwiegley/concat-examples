@@ -1,8 +1,8 @@
 name:                concat-examples
 version:             0.1.0.0
 cabal-version:       >=1.18
-synopsis:            Experiments with constrained categories
-description:         Experiments with constrained categories
+synopsis:            Examples of compiling with categories
+description:         Examples of compiling with categories
 Category:            categories
 license:             BSD3
 license-file:        LICENSE
